@@ -28,16 +28,16 @@ stages:
     #     dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
     #     tags: |
     #       $(tag)
-    - task: DockerCompose@0
-      inputs:
-        containerregistrytype: 'Azure Container Registry'
-        azureSubscription: 'Bartek-MPN'
-        azureContainerRegistry: $(acr)
-        dockerComposeFile: 'docker-compose.yml'
-        action: 'Build services'
-        projectName: $(Build.Repository.Name)
-        qualifyImageNames: true
-        additionalImageTags: $(Build.BuildId)
+    # - task: DockerCompose@0
+    #   inputs:
+    #     containerregistrytype: 'Azure Container Registry'
+    #     azureSubscription: 'Bartek-MPN'
+    #     azureContainerRegistry: $(acr)
+    #     dockerComposeFile: 'docker-compose.yml'
+    #     action: 'Build services'
+    #     projectName: $(Build.Repository.Name)
+    #     qualifyImageNames: true
+    #     additionalImageTags: $(Build.BuildId)
     # - pwsh: |
     #     docker images ls
     - task: DockerCompose@0
