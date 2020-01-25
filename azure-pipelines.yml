@@ -21,13 +21,13 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
-        tags: |
-          $(tag)
+    # - task: Docker@2
+    #   displayName: Build an image
+    #   inputs:
+    #     command: build
+    #     dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
+    #     tags: |
+    #       $(tag)
     - task: DockerCompose@0
       inputs:
         containerregistrytype: 'Azure Container Registry'
