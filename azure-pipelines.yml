@@ -27,3 +27,11 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
         tags: |
           $(tag)
+
+    - task: DockerCompose@0
+      inputs:
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'Bartek-MPN'
+        azureContainerRegistry: '{"loginServer":"cbacrkk.azurecr.io", "id" : "/subscriptions/44190cc2-cce1-4a4e-9d3e-9d97b944066c/resourceGroups/KK-RG-WE/providers/Microsoft.ContainerRegistry/registries/cbacrkk"}'
+        dockerComposeFile: '**/docker-compose.yml'
+        action: 'Build services'
