@@ -35,8 +35,18 @@ stages:
         azureContainerRegistry: $(acr)
         dockerComposeFile: 'docker-compose.yml'
         action: 'Build services'
+        projectName: $(Build.Repository.Name)
         qualifyImageNames: true
         additionalImageTags: $(Build.BuildId)
-    - pwsh: |
-        docker images ls
-
+    # - pwsh: |
+    #     docker images ls
+    - task: DockerCompose@0
+      displayName: Push services
+      inputs:
+        action: Push services
+        azureSubscription: 'Bartek-MPN'
+        azureContainerRegistry: $(acr)
+        dockerComposeFile: docker-compose.yml
+        projectName: $(Build.Repository.Name)
+        qualifyImageNames: true
+        additionalImageTags: $(Build.BuildId)
