@@ -32,9 +32,9 @@ stages:
     - script: az acr login --name $(acr)
     - task: DockerCompose@0
       inputs:
-        containerregistrytype: 'Azure Container Registry'
         azureSubscription: 'Bartek-MPN'
-        azureContainerRegistry: $(acr)
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'cbacrkk'
         dockerComposeFile: 'docker-compose.yml'
         action: 'Build services'
         projectName: $(Build.Repository.Name)
@@ -47,7 +47,8 @@ stages:
       inputs:
         action: Push services
         azureSubscription: 'Bartek-MPN'
-        azureContainerRegistry: $(acr)
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'cbacrkk'
         dockerComposeFile: docker-compose.yml
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
