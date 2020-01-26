@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  acr: cbacrkk
+  acr: 'cbacrkk'
 
 stages:
 - stage: Build
