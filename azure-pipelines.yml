@@ -28,8 +28,6 @@ stages:
     #     dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
     #     tags: |
     #       $(tag)
-    - script: echo $(acr)
-    - script: az acr login --name $(acr)
     - task: DockerCompose@0
       inputs:
         azureSubscription: 'Bartek-MPN'
