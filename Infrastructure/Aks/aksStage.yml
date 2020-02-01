@@ -1,3 +1,15 @@
+parmaters:
+- name: name 
+  type: string 
+- name: azureSubscription 
+  type: string 
+- name: resourceGroupName 
+  type: string 
+- name: networkParameters 
+  type: object 
+- name: aksParameters 
+  type: object 
+
 stages:
 - stage: ${{ parameters.name }}
   variables:
