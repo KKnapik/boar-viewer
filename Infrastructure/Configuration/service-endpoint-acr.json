@@ -1,0 +1,25 @@
+{
+    "id": "980cf1c0-ba7c-4731-bd7f-1df785b89ab3",
+    "description": "",
+    "administratorsGroup": null,
+    "authorization": {
+      "parameters": {
+        "username": "Docker_ID_Sample",
+        "password": "Docker_ID_Sample",
+        "email": "Docker_ID_Email",
+        "registry": "https://index.docker.io/v1/"
+      },
+      "scheme": "UsernamePassword"
+    },
+    "createdBy": null,
+    "data": {
+      "registrytype": "Others"
+    },
+    "name": "Docker_Registry_Sample",
+    "type": "dockerregistry",
+    "url": "https://index.docker.io/v1/",
+    "readersGroup": null,
+    "groupScopeId": null,
+    "serviceEndpointProjectReferences": null,
+    "operationStatus": null
+}

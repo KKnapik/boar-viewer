@@ -14,9 +14,7 @@ parameters:
 
 stages:
 - stage: ${{ parameters.name }}
-  variables:
-  - ${{ if eq(variables['build.SourceBranchName'], 'prod') }}:
-    - group: prod
+
   jobs:
 
   - job: Cluster_Deployment

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "boar-viewer.fullname" . }}-test-connection"
+  labels:
+    app.kubernetes.io/name: {{ include "boar-viewer.name" . }}
+    helm.sh/chart: {{ include "boar-viewer.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "boar-viewer.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
