@@ -43,7 +43,7 @@ stages:
                         -vnetAKSName "Vnet_$(envName)_AKS"'
     aksParameters: '-location $(location) 
                     -acrName "cloudboaracr$(envName)"
-                    -virtualNetworkName "Vnet_$(shortLocation)$(envName)_AKS" 
+                    -virtualNetworkName "Vnet_$(envName)_AKS" 
                     -aksName "cloudboaraks$(envName)" 
                     -aksNodeCount $(agentMinCount)
                     -aksMaxNodeCount $(agentMaxCount)               
