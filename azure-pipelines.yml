@@ -11,7 +11,7 @@ resources:
 variables:
 - name: subscription
   value: 'Bartek-MPN'
-- ${{ if startsWith(variables['build.SourceBranchName'], 'feature') }}:
+- ${{ if startsWith(variables['build.SourceBranch'], 'feature') }}:
   - group: maint
 
 
@@ -30,7 +30,7 @@ stages:
     steps:
     - pwsh: |
         write-output "$(envName)"
-        write-output "$(build.SourceBranchName)"
+        write-output "$(build.SourceBranch)"
 
 - template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
 
