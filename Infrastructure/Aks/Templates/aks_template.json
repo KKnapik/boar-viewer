@@ -26,7 +26,13 @@
         },
         "envName": {
             "type": "string"
-        }
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalSecret": {
+            "type": "string"
+        },
     },
     "variables": {
         "serviceCidr": "10.1.0.0/16",
@@ -85,6 +91,10 @@
                         "osType": "Linux"
                     }
                 ],
+                "servicePrincipalProfile": {
+                    "clientId": "[parameters('servicePrincipalClientId')]",
+                    "secret": "[parameters('servicePrincipalSecret')]"
+                },
                 "addonProfiles": {
                     "omsagent": {
                         "enabled": false

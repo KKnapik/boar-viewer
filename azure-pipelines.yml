@@ -47,7 +47,9 @@ stages:
                     -aksName "cloudboaraks$(envName)" 
                     -aksNodeCount $(agentMinCount)
                     -aksMaxNodeCount $(agentMaxCount)               
-                    -envName "$(envName)"'
+                    -envName "$(envName)"
+                    -servicePrincipalClientId "$(akscCientId)"
+                    -servicePrincipalSecret "$(aksSecret)"'
 
 - stage: Build
   displayName: Build image
