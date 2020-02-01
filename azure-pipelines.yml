@@ -11,10 +11,10 @@ resources:
 variables:
 - name: subscription
   value: 'Bartek-MPN'
-- ${{ if startsWith(variables['build.SourceBranch'], 'feature') }}:
+- ${{ if startsWith(variables['build.SourceBranch'], 'refs/heads/feature') }}:
   - group: maint
-
-
+- ${{ if startsWith(variables['build.SourceBranch'], 'refs/heads/develop') }}:
+  - group: dev
 
 stages:
 
