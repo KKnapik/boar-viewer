@@ -10,12 +10,29 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
-  acr: 'cbacrkk'
+  subscription: 'Bartek-MPN'
 
 stages:
+
+- template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
+  parameters:
+    name: Aks_Cluster_Deployment
+    azureSubscription: '$(subscription)'
+    resourceGroupName: 'cloudboar-$(envName)-rg'
+    networkParameters: '-location $(location) 
+                        -vnetAKSName "Vnet_$(envName)_AKS"'
+    aksParameters: '-location $(location) 
+                    -acrName "cbacr$(envName)"
+                    -virtualNetworkName "Vnet_$(shortLocation)$(envName)_AKS" 
+                    -aksName "aks$(shortLocation)$(envName)" 
+                    -aksNodeCount $(agentMinCount)
+                    -aksMaxNodeCount $(agentMaxCount)               
+                    -envName "$(envName)"'
+
 - stage: Build
   displayName: Build image
-  jobs:  
+  jobs:
+
   - job: Build
     displayName: Build
     pool:

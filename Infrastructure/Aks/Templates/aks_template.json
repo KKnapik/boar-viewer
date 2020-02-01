@@ -1,0 +1,104 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "acrName": {
+            "type": "string"
+        },
+        "virtualNetworkName": {
+            "type": "string"
+        },
+        "aksName": {
+            "type": "string"
+        },
+        "aksNodeCount": {
+            "type": "int"
+        },
+        "aksMaxNodeCount": {
+            "type": "int"
+        },
+        "aksVmSize": {
+            "type": "string",
+            "defaultvalue": "Standard_DS2_v3"
+        },
+        "envName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "serviceCidr": "10.1.0.0/16",
+        "dnsServiceIP": "10.1.0.10",
+        "dockerBridgeCidr": "172.17.0.1/16",
+        "aksName": "[concat(parameters('aksName'), substring(uniqueString(resourceGroup().id),0,8) )]",
+        "subnetName": "AKS"
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.ContainerRegistry/registries",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "name": "[parameters('acrName')]",
+            "apiVersion": "2017-10-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "adminUserEnabled": false
+            },
+            "dependsOn": [
+            ]
+        },
+        {
+            "type": "Microsoft.ContainerService/managedClusters",
+            "name": "[variables('aksName')]",
+            "apiVersion": "2019-08-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Cluster": "default",
+                "Env": "[parameters('envName')]",
+                "Region": "[parameters('location')]",
+                "ServiceType": "aks"
+            },
+            "properties": {
+                "dnsPrefix": "[parameters('aksName')]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool",
+                        "count": "[parameters('aksNodeCount')]",
+                        "maxCount": "[parameters('aksMaxNodeCount')]",
+                        "minCount": "[parameters('aksNodeCount')]",
+                        "type": "VirtualMachineScaleSets",
+                        "enableAutoScaling": true,
+                        "availabilityZones": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
+                        "vmSize": "[parameters('aksVmSize')]",
+                        "storageProfile": "ManagedDisks",
+                        "vnetSubnetID": "[resourceId( 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), variables('subnetName'))]",
+                        "maxPods": 30,
+                        "osType": "Linux"
+                    }
+                ],
+                "addonProfiles": {
+                    "omsagent": {
+                        "enabled": false
+                    }
+                },
+                "enableRBAC": true,
+                "networkProfile": {
+                    "networkPlugin": "azure",
+                    "serviceCidr": "[variables('serviceCidr')]",
+                    "dnsServiceIP": "[variables('dnsServiceIP')]",
+                    "dockerBridgeCidr": "[variables('dockerBridgeCidr')]",
+                    "loadBalancerSku": "Standard"
+                }
+            }
+        }
+    ]
+}

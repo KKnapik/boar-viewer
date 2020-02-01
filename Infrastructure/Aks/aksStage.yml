@@ -1,0 +1,35 @@
+  
+stages:
+- stage: ${{ parameters.name }}
+  jobs:
+
+  - job: Aks_networking
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+
+    - pwsh: |
+        Write-Host ${{ parameters.vnetName }}
+
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Azure Deployment: Aks Networking'
+      inputs:
+        azureSubscription: ${{ parameters.azureSubscription }}
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: ${{ parameters.resourceGroupName }}
+        location: ${{ parameters.location }}
+        templateLocation: 'Linked artifact'
+        csmFile: ${{ parameters.networkTemplateFile }}
+        overrideParameters: ${{ parameters.networkParameters }}
+        deploymentMode: 'Incremental'
+
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Azure Deployment: AKS Cluster Deployment'
+      inputs:
+        azureSubscription: ${{ parameters.azureSubscription }}
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: ${{ parameters.resourceGroupName }}
+        location: ${{ parameters.location }}
+        templateLocation: 'Linked artifact'
+        csmFile: ${{ parameters.aksTemplateFile }}
+        overrideParameters: ${{ parameters.aksParameters }}

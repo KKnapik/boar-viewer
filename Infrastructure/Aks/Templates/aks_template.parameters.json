@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "acrName": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "servicePrincipalClientId": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "servicePrincipalSecret": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "virtualNetworkName": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "subnetName": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aksName": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aksNodeCount": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aksMaxNodeCount": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aksVmSize": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "linuxAdminUsername": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "sshRSAPublicKey": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "envName": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "kubernetesVersion": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aad_ClientAppID": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aad_ServerAppID": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aad_TenantID": {
+            "value": "## TO BE DEFINED ##"
+        },
+        "aad_ServerAppSecret": {
+            "value": "## TO BE DEFINED ##"
+        }
+    }
+}
