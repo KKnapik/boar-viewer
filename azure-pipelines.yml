@@ -75,21 +75,21 @@ stages:
       inputs:
         azureSubscription: 'Bartek-MPN'
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: '$(containerRegistry)'
+        dockerRegistryEndpoint: 'registrydocker'
         dockerComposeFile: 'docker-compose.yml'
         action: 'Build services'
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
         additionalImageTags: $(Build.BuildId)
-    # - pwsh: |
-    #     docker images ls
+    - pwsh: |
+        write-output "$(containerRegistry)"
     - task: DockerCompose@0
       displayName: Push services
       inputs:
         action: Push services
         azureSubscription: 'Bartek-MPN'
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: '$(containerRegistry)'
+        dockerRegistryEndpoint: 'registrydocker'
         dockerComposeFile: docker-compose.yml
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
