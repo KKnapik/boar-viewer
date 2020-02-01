@@ -53,7 +53,7 @@
             "apiVersion": "2017-10-01",
             "location": "[parameters('location')]",
             "properties": {
-                "adminUserEnabled": false
+                "adminUserEnabled": true
             },
             "dependsOn": [
             ]
