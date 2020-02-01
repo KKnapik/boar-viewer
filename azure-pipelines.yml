@@ -9,12 +9,16 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.BuildId)'
-  subscription: 'Bartek-MPN'
+- name: subscription
+  value: 'Bartek-MPN'
+- ${{ if startsWith(variables['build.SourceBranchName'], 'feature') }}:
+  - group: maint
 
 stages:
 
 - template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
+
+
   parameters:
     name: Aks_Cluster_Deployment
     azureSubscription: '$(subscription)'
