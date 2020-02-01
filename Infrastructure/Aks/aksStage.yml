@@ -14,7 +14,7 @@ parameters:
 
 stages:
 - stage: ${{ parameters.name }}
-  contion: eq(variables['run'], 'no')
+  condition: eq(variables['run'], 'no')
 
   jobs:
 
