@@ -14,10 +14,25 @@ variables:
 - ${{ if startsWith(variables['build.SourceBranchName'], 'feature') }}:
   - group: maint
 
+
+
 stages:
 
-- template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
+- stage: Test
+  displayName: Test image
+  condition: 
+  jobs:
 
+  - job: Test
+    displayName: Test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - pwsh: |
+        write-output "$(location)"
+        write-output "$(build.SourceBranchName)"
+
+- template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
 
   parameters:
     name: Aks_Cluster_Deployment

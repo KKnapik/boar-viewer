@@ -1,9 +1,12 @@
   
 stages:
 - stage: ${{ parameters.name }}
+  variables:
+  - ${{ if eq(variables['build.SourceBranchName'], 'prod') }}:
+    - group: prod
   jobs:
 
-  - job: Aks_networking
+  - job: Cluster_Deployment
     pool:
       vmImage: 'windows-latest'
     steps:
