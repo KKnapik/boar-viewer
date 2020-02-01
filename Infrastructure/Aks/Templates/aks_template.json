@@ -32,7 +32,7 @@
         },
         "servicePrincipalSecret": {
             "type": "string"
-        },
+        }
     },
     "variables": {
         "serviceCidr": "10.1.0.0/16",
