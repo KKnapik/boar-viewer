@@ -95,7 +95,7 @@ stages:
         qualifyImageNames: true
         additionalImageTags: $(Build.BuildId)
 
-- stage: Helm Deploy
+- stage: Helm_Deploy
   displayName: Helm
   condition: eq(variables['run'], 'yes')
   jobs:
