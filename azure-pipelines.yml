@@ -12,7 +12,7 @@ variables:
 - name: subscription
   value: 'Bartek-MPN'
 - name: containerRegistry
-  value: 'cloudboaracrmaint'
+  value: 'registrydocker'
 - name: run
   value: 'yes'
 - ${{ if startsWith(variables['build.SourceBranch'], 'refs/heads/feature') }}:
