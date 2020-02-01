@@ -22,9 +22,9 @@ stages:
     networkParameters: '-location $(location) 
                         -vnetAKSName "Vnet_$(envName)_AKS"'
     aksParameters: '-location $(location) 
-                    -acrName "cbacr$(envName)"
+                    -acrName "cloudboaracr$(envName)"
                     -virtualNetworkName "Vnet_$(shortLocation)$(envName)_AKS" 
-                    -aksName "aks$(shortLocation)$(envName)" 
+                    -aksName "cloudboaraks$(envName)" 
                     -aksNodeCount $(agentMinCount)
                     -aksMaxNodeCount $(agentMaxCount)               
                     -envName "$(envName)"'

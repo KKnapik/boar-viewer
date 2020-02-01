@@ -19,7 +19,7 @@ stages:
         resourceGroupName: ${{ parameters.resourceGroupName }}
         location: ${{ parameters.location }}
         templateLocation: 'Linked artifact'
-        csmFile: ${{ parameters.networkTemplateFile }}
+        csmFile: Infrastructure/Aks/Templates/vnet_template.json
         overrideParameters: ${{ parameters.networkParameters }}
         deploymentMode: 'Incremental'
 
@@ -31,5 +31,5 @@ stages:
         resourceGroupName: ${{ parameters.resourceGroupName }}
         location: ${{ parameters.location }}
         templateLocation: 'Linked artifact'
-        csmFile: ${{ parameters.aksTemplateFile }}
+        csmFile: Infrastructure/Aks/Templates/aks_template.json
         overrideParameters: ${{ parameters.aksParameters }}
