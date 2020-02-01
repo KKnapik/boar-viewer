@@ -38,6 +38,7 @@ stages:
     name: Aks_Cluster_Deployment
     azureSubscription: '$(subscription)'
     resourceGroupName: 'cloudboar-$(envName)-rg'
+    location: '$(location)'
     networkParameters: '-location $(location) 
                         -vnetAKSName "Vnet_$(envName)_AKS"'
     aksParameters: '-location $(location) 

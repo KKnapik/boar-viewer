@@ -5,6 +5,8 @@ parameters:
   type: string 
 - name: resourceGroupName 
   type: string 
+- name: location 
+  type: string 
 - name: networkParameters 
   type: object 
 - name: aksParameters 
@@ -23,7 +25,7 @@ stages:
     steps:
 
     - pwsh: |
-        Write-Host ${{ parameters.vnetName }}
+        Write-Host ${{ parameters.aksParameters }}
 
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment: Aks Networking'
