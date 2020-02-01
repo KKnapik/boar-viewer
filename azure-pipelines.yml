@@ -75,7 +75,7 @@ stages:
       inputs:
         azureSubscription: 'Bartek-MPN'
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'registrydocker'
+        dockerRegistryEndpoint: 'cbacrkk'
         dockerComposeFile: 'docker-compose.yml'
         action: 'Build services'
         projectName: $(Build.Repository.Name)
@@ -89,7 +89,7 @@ stages:
         action: Push services
         azureSubscription: 'Bartek-MPN'
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'registrydocker'
+        dockerRegistryEndpoint: 'cbacrkk'
         dockerComposeFile: docker-compose.yml
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
