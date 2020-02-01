@@ -1,4 +1,4 @@
-parmaters:
+parameters:
 - name: name 
   type: string 
 - name: azureSubscription 
