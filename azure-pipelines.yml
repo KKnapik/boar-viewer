@@ -29,7 +29,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - pwsh: |
-        write-output "$(location)"
+        write-output "$(envName)"
         write-output "$(build.SourceBranchName)"
 
 - template: Infrastructure/Aks/aksStage.yml #  Aks Cluster Deployment
