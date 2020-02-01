@@ -22,7 +22,7 @@
         },
         "aksVmSize": {
             "type": "string",
-            "defaultvalue": "Standard_DS2_v3"
+            "defaultvalue": "Standard_B2s"
         },
         "envName": {
             "type": "string"
