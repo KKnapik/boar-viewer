@@ -94,3 +94,28 @@ stages:
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
         additionalImageTags: $(Build.BuildId)
+
+- stage: Helm Deploy
+  displayName: Helm
+  condition: eq(variables['run'], 'yes')
+  jobs:
+
+  - job: App_Deploy
+    displayName: App Deploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: HelmInstaller@1
+      inputs:
+        helmVersionToInstall: '2.12.2'
+    - task: HelmDeploy@0
+      inputs:
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceConnection: 'cloudboar-aks-cloudboaraksmaint3pbopfe2-cloudboar-1580589016602'
+        namespace: 'cloudboar'
+        command: 'upgrade'
+        chartType: 'FilePath'
+        chartPath: 'boar-viewer/Kubernetesboar-viewer'
+        releaseName: 'Web-Frontend'
+        overrideValues: 'tag=$(Build.BuildId)'
+        valueFile: 'Kubernetes/boar-viewer/values.yaml'
