@@ -131,7 +131,7 @@ stages:
       displayName: Deploy
       inputs:
         kubernetesServiceConnection: 'cloudboar-aks'
-        namespace: default
+        namespace: 'kube-system'
         manifests: Infrastructure/Aks/Roles/tiller.yaml
 
     - task: HelmInstaller@1
