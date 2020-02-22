@@ -70,7 +70,7 @@ stages:
 
     - task: replacetokens@3
       inputs:
-        targetFiles: 'boar-viewer/docker-compose.yml'
+        targetFiles: 'docker-compose.yml'
         encoding: 'auto'
         writeBOM: true
         actionOnMissing: 'warn'
@@ -78,8 +78,8 @@ stages:
         tokenPrefix: '/{'
         tokenSuffix: '}\'
 
-    # - pwsh: |
-    #     cat boar-viewer/docker-compose.yml
+    - pwsh: |
+        cat $(System.DefaultWorkingDirectory)/docker-compose.yml
 
     - task: DockerCompose@0
       inputs:
