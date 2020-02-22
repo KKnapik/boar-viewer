@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ printf "%s/webfrontend:%s" .Values.image.repository .Values.image.tag }}"
           imagePullSecrets:
             - name: acrazure
           imagePullPolicy: {{ .Values.image.pullPolicy }}
