@@ -157,7 +157,7 @@ stages:
         chartType: 'FilePath'
         chartPath: 'Kubernetes/boar-viewer'
         releaseName: 'cloudboar-app'
-        overrideValues: 'tag=$(tag),repository=$(containerRegistry).azurecr.io'
+        overrideValues: 'tag=$(tag),image.repository=$(containerRegistry).azurecr.io'
         valueFile: 'Kubernetes/boar-viewer/values.yaml'
         force: true
         waitForExecution: false
