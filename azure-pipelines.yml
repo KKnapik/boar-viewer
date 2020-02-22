@@ -67,13 +67,20 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    # - task: Docker@2
-    #   displayName: Build an image
-    #   inputs:
-    #     command: build
-    #     dockerfile: '$(Build.SourcesDirectory)/Api.BoarService/Dockerfile'
-    #     tags: |
-    #       $(tag)
+
+    - task: replacetokens@3
+      inputs:
+        targetFiles: 'boar-viewer/docker-compose.yml'
+        encoding: 'auto'
+        writeBOM: true
+        actionOnMissing: 'warn'
+        keepToken: false
+        tokenPrefix: '/{'
+        tokenSuffix: '}\'
+
+    - pwsh: |
+        cat boar-viewer/docker-compose.yml
+
     - task: DockerCompose@0
       inputs:
         azureSubscription: 'Bartek-MPN'
