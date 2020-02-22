@@ -111,7 +111,7 @@ stages:
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Kubernetes Service Connection'
-        kubernetesServiceConnection: 'cloudboar-aks-cloudboaraksmaint3pbopfe2-cloudboar-1580589016602'
+        kubernetesServiceConnection: 'cloudboar-aks'
         namespace: 'cloudboar'
         command: 'upgrade'
         chartType: 'FilePath'
