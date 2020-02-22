@@ -78,8 +78,8 @@ stages:
         tokenPrefix: '/{'
         tokenSuffix: '}\'
 
-    - pwsh: |
-        cat boar-viewer/docker-compose.yml
+    # - pwsh: |
+    #     cat boar-viewer/docker-compose.yml
 
     - task: DockerCompose@0
       inputs:
