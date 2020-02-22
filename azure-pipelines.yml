@@ -59,7 +59,7 @@ stages:
 
 - stage: Build
   displayName: Build image
-  condition: eq(variables['run'], 'yes')
+  condition: eq(variables['run'], 'no')
   jobs:
 
   - job: Build
@@ -132,7 +132,7 @@ stages:
       inputs:
         kubernetesServiceConnection: 'cloudboar-aks'
         namespace: default
-        manifests: /Infrastructure/Aks/Roles/tiller.yaml
+        manifests: Infrastructure/Aks/Roles/tiller.yaml
 
     - task: HelmInstaller@1
       inputs:
