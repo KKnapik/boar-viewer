@@ -159,3 +159,5 @@ stages:
         releaseName: 'cloudboar-app'
         overrideValues: 'tag=$(tag),repository=$(containerRegistry).azurecr.io'
         valueFile: 'Kubernetes/boar-viewer/values.yaml'
+        force: true
+        waitForExecution: false
