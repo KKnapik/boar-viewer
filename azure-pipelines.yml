@@ -26,7 +26,7 @@ stages:
 
 - stage: Test
   displayName: Test image
-  condition: eq(variables['run'], 'yes')
+  condition: eq(variables['run'], 'no')
   jobs:
 
   - job: Test
@@ -108,6 +108,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+
     - task: KubernetesManifest@0
       displayName: Create imagePullSecret
       inputs:
@@ -117,9 +118,27 @@ stages:
         dockerRegistryEndpoint: $(containerRegistry)
         kubernetesServiceConnection: 'cloudboar-aks'
 
+    - task: KubernetesManifest@0
+      displayName: Deploy
+      inputs:
+        kubernetesServiceConnection: 'cloudboar-aks'
+        namespace: default
+        manifests: boar-viewer/Infrastructure/Aks/Roles/tiller.yaml
+
     - task: HelmInstaller@1
       inputs:
         helmVersionToInstall: '2.12.2'
+
+    - task: HelmDeploy@0
+      displayName: Helm init
+      inputs:
+        connectionType: 'Kubernetes Service Connection'
+        kubernetesServiceConnection: 'cloudboar-aks'
+        command: init
+        upgradetiller: true
+        waitForExecution: true
+        arguments: --service-account tiller
+
     - task: HelmDeploy@0
       inputs:
         connectionType: 'Kubernetes Service Connection'
