@@ -90,6 +90,7 @@ stages:
         action: 'Build services'
         projectName: $(Build.Repository.Name)
         qualifyImageNames: true
+        includeLatestTag: false
         additionalImageTags: $(tag)
     - pwsh: |
         write-output "$(containerRegistry)"
@@ -102,6 +103,7 @@ stages:
         dockerRegistryEndpoint: $(containerRegistry)
         dockerComposeFile: docker-compose.yml
         projectName: $(Build.Repository.Name)
+        includeLatestTag: false
         qualifyImageNames: true
         additionalImageTags: $(tag)
 
@@ -130,7 +132,7 @@ stages:
       inputs:
         kubernetesServiceConnection: 'cloudboar-aks'
         namespace: default
-        manifests: boar-viewer/Infrastructure/Aks/Roles/tiller.yaml
+        manifests: /Infrastructure/Aks/Roles/tiller.yaml
 
     - task: HelmInstaller@1
       inputs:
