@@ -1,3 +1,5 @@
+{{- $repo := .Values.image.repository }}
+{{- $tag := .Values.image.tag }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,20 +23,14 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: '{{ $repo }}/apiboarservice:{{ $tag }}'
+          imagePullSecrets:
+            - name: acrazure
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
