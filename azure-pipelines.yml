@@ -42,6 +42,7 @@ stages:
     azureSubscription: '$(subscription)'
     resourceGroupName: 'cloudboar-$(envName)-rg'
     location: '$(location)'
+    run: 'no'
     networkParameters: '-location $(location) 
                         -vnetAKSName "Vnet_$(envName)_AKS"'
     aksParameters: '-location $(location) 
@@ -115,7 +116,7 @@ stages:
         namespace: 'cloudboar'
         command: 'upgrade'
         chartType: 'FilePath'
-        chartPath: 'boar-viewer/Kubernetesboar-viewer'
+        chartPath: 'Kubernetes/boar-viewer'
         releaseName: 'Web-Frontend'
         overrideValues: 'tag=$(Build.BuildId)'
         valueFile: 'Kubernetes/boar-viewer/values.yaml'

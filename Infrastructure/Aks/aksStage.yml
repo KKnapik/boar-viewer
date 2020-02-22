@@ -11,10 +11,12 @@ parameters:
   type: object 
 - name: aksParameters 
   type: object 
+- name: run
+  type: string
 
 stages:
 - stage: ${{ parameters.name }}
-  condition: eq(variables['run'], 'yes')
+  condition: eq(variables['run'], 'no')
 
   jobs:
 
