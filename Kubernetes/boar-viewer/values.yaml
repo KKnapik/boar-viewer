@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: cbacrkk.azurecr.io/webfrontend
-  tag: 38
+  repository: 
+  tag: 
   pullPolicy: IfNotPresent
 
 nameOverride: ""
