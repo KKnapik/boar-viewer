@@ -9,6 +9,13 @@ image:
   tag: 
   pullPolicy: IfNotPresent
 
+serviceConfigMapProperties:
+ apiFoodUrl: api-food
+ apiBorarUrl: api-boar
+
+
+
+
 nameOverride: ""
 fullnameOverride: ""
 

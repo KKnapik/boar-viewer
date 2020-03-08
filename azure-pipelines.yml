@@ -44,7 +44,7 @@ stages:
     azureSubscription: '$(subscription)'
     resourceGroupName: 'cloudboar-$(envName)-rg'
     location: '$(location)'
-    run: 'yes'
+    run: 'no'
     networkParameters: '-location $(location) 
                         -vnetAKSName "Vnet_$(envName)_AKS"'
     aksParameters: '-location $(location) 
