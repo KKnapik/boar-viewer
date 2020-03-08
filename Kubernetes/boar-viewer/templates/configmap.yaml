@@ -1,0 +1,14 @@
+{{- $release := .Release.Name }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "boar-viewer.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "boar-viewer.name" . }}
+    helm.sh/chart: {{ include "boar-viewer.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+{{- range $propertyName, $propertyValue := .Values.serviceConfigMapProperties }}
+  {{ $propertyName }}: {{ printf "%s-%s" $release $propertyValue | quote }}
+{{- end }}

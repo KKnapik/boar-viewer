@@ -10,11 +10,8 @@ image:
   pullPolicy: IfNotPresent
 
 serviceConfigMapProperties:
- apiFoodUrl: api-food
- apiBorarUrl: api-boar
-
-
-
+ APIFOOD_URL: api-food
+ APIBOAR_URL: api-boar
 
 nameOverride: ""
 fullnameOverride: ""
