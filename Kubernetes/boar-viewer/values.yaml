@@ -9,6 +9,13 @@ image:
   tag: 
   pullPolicy: IfNotPresent
 
+
+global:
+  image:
+    repository: 
+    tag: 
+    pullPolicy: IfNotPresent
+
 serviceConfigMapProperties:
  APIFOOD_URL: api-food
  APIBOAR_URL: api-boar

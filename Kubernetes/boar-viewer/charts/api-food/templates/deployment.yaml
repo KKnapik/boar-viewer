@@ -1,5 +1,5 @@
-{{- $repo := .Values.image.repository }}
-{{- $tag := .Values.image.tag }}
+{{- $repo := .Values.global.image.repository }}
+{{- $tag := .Values.global.image.tag }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
