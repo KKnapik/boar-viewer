@@ -32,6 +32,8 @@ stages:
 
       steps:
 
+      - pwsh: pwd 
+      - pwsh: dir 
       - task: Docker@2
         displayName: 'Docker buildAndPush - AD'
         inputs:
