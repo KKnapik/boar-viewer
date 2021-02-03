@@ -34,7 +34,6 @@ stages:
 
       - pwsh: pwd 
       - pwsh: dir 
-      - pwsh: ls $(System.DefaultWorkingDirectory)/apiweb/SampleWebApi 
       - task: Docker@2
         displayName: 'Docker buildAndPush - AD'
         inputs:
@@ -90,8 +89,8 @@ stages:
       - task: HelmDeploy@0
         inputs:
           connectionType: 'Kubernetes Service Connection'
-          kubernetesServiceConnection: 'cloudboar-aks'
-          namespace: 'cloudboar'
+          kubernetesServiceConnection: 'lcmaks'
+          namespace: 'ipimip'
           command: 'upgrade'
           chartType: 'FilePath'
           chartPath: 'Kubernetes/boar-viewer'
