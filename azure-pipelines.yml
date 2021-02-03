@@ -22,17 +22,7 @@ stages:
   
   - stage: Test
     displayName: Test image
-    condition: eq(variables['run'], 'no')
     jobs:
-  
-    - job: Test
-      displayName: Test
-      pool:
-        vmImage: 'ubuntu-latest'
-      steps:
-      - pwsh: |
-          write-output "$(envName)"
-          write-output "$(build.SourceBranch)"
   
 
     - job: Run_docker_build_and_push
