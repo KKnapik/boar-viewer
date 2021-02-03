@@ -22,9 +22,15 @@
         },
         "aksVmSize": {
             "type": "string",
-            "defaultvalue": "Standard_DS2_v3"
+            "defaultvalue": "Standard_B2s"
         },
         "envName": {
+            "type": "string"
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalSecret": {
             "type": "string"
         }
     },
@@ -47,7 +53,7 @@
             "apiVersion": "2017-10-01",
             "location": "[parameters('location')]",
             "properties": {
-                "adminUserEnabled": false
+                "adminUserEnabled": true
             },
             "dependsOn": [
             ]
@@ -85,6 +91,10 @@
                         "osType": "Linux"
                     }
                 ],
+                "servicePrincipalProfile": {
+                    "clientId": "[parameters('servicePrincipalClientId')]",
+                    "secret": "[parameters('servicePrincipalSecret')]"
+                },
                 "addonProfiles": {
                     "omsagent": {
                         "enabled": false

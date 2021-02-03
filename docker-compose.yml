@@ -3,7 +3,7 @@ version: '3.4'
 services:
   web.frontend:
     container_name: web.frontend
-    image: cbacrkk.azurecr.io/webfrontend
+    image: /{containerRegistry}\.azurecr.io/webfrontend
     build:
       context: .
       dockerfile: Web.Frontend/Dockerfile
@@ -13,14 +13,14 @@ services:
 
   api.foodservice:
     container_name: api.foodservice
-    image: cbacrkk.azurecr.io/apifoodservice
+    image: /{containerRegistry}\.azurecr.io/apifoodservice
     build:
       context: .
       dockerfile: Api.FoodService/Dockerfile
 
   api.boarservice:
     container_name: api.boarservice
-    image: cbacrkk.azurecr.io/apiboarservice
+    image: /{containerRegistry}\.azurecr.io/apiboarservice
     build:
       context: .
       dockerfile: Api.BoarService/Dockerfile

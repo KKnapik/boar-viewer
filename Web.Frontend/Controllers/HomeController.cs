@@ -31,7 +31,8 @@ namespace Web.Frontend.Controllers
             try
             {
                 var boarList = new List<string>();
-                var res = await CallApi("http://api.foodservice", "/food");
+                var apiAppName = Environment.GetEnvironmentVariable("APIFOOD_URL");
+                var res = await CallApi($"http://{apiAppName}", "/food");
                 if (!res.IsSuccessStatusCode) return View("ApiProblemView");
 
                 foreach (JObject obj in DeserializeResult(res))
@@ -53,7 +54,8 @@ namespace Web.Frontend.Controllers
             try
             {
                 var foodList = new List<string>();
-                var res = await CallApi("http://api.boarservice", "/boar");
+                var apiAppName = Environment.GetEnvironmentVariable("APIBOAR_URL");
+                var res = await CallApi($"http://{apiAppName}", "/boar");
                 if (!res.IsSuccessStatusCode) return View("ApiProblemView");
 
                 foreach (JObject obj in DeserializeResult(res))

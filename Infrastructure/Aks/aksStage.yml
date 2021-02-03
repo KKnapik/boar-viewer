@@ -1,8 +1,23 @@
+parameters:
+- name: name 
+  type: string 
+- name: azureSubscription 
+  type: string 
+- name: resourceGroupName 
+  type: string 
+- name: location 
+  type: string 
+- name: networkParameters 
+  type: object 
+- name: aksParameters 
+  type: object 
+- name: run
+  type: string
+
 stages:
 - stage: ${{ parameters.name }}
-  variables:
-  - ${{ if eq(variables['build.SourceBranchName'], 'prod') }}:
-    - group: prod
+  condition: eq(variables['run'], 'no')
+
   jobs:
 
   - job: Cluster_Deployment
@@ -11,7 +26,7 @@ stages:
     steps:
 
     - pwsh: |
-        Write-Host ${{ parameters.vnetName }}
+        Write-Host ${{ parameters.aksParameters }}
 
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment: Aks Networking'

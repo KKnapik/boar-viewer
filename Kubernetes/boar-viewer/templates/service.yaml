@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "boar-viewer.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "boar-viewer.name" . }}
+    helm.sh/chart: {{ include "boar-viewer.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "boar-viewer.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
