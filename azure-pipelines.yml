@@ -34,6 +34,7 @@ stages:
 
       - pwsh: pwd 
       - pwsh: dir 
+      - pwsh: cat $(System.DefaultWorkingDirectory)/sample-webapi/SampleWebApi/Dockerfile 
       - task: Docker@2
         displayName: 'Docker buildAndPush - AD'
         inputs:
@@ -41,7 +42,7 @@ stages:
           containerRegistry: krisacr
           repository: apidotnet
           buildContext: sample-webapi/
-          Dockerfile: $(System.DefaultWorkingDirectory)/sample-webapi/SampleWebApi/Dockerfile
+          Dockerfile: '/sample-webapi/SampleWebApi/Dockerfile'
           tags: |
             latest
             $(Build.BuildId)
