@@ -39,7 +39,7 @@ stages:
           containerRegistry: krisacr
           repository: apidotnet
           buildContext: sample-webapi/
-          Dockerfile: sample-webapi/SampleWebApi/Dockerfile
+          Dockerfile: $(System.DefaultWorkingDirectory)/sample-webapi/SampleWebApi/Dockerfile
           tags: |
             latest
             $(Build.BuildId)
