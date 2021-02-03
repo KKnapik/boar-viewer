@@ -2,11 +2,11 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["SampleWebApi/SampleWebApi.csproj", "SampleWebApi/"]
+COPY ["SampleWebApi.csproj", "SampleWebApi/"]
 RUN dotnet restore "SampleWebApi/SampleWebApi.csproj"
 COPY . .
 WORKDIR "/src/SampleWebApi"
