@@ -27,9 +27,6 @@ spec:
           imagePullSecrets:
             - name: acrazure
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-          - configMapRef:
-              name: {{ include "boar-viewer.fullname" . }}
           ports:
             - name: http
               containerPort: 80
