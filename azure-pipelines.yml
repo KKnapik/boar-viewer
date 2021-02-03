@@ -40,7 +40,7 @@ stages:
           command: 'buildAndPush'
           containerRegistry: krisacr
           repository: apidotnet
-          Dockerfile: 'Dockerfile'
+          Dockerfile: SampleWebApi/Dockerfile
           tags: |
             latest
             $(Build.BuildId)
