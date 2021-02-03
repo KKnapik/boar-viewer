@@ -42,7 +42,7 @@ stages:
           containerRegistry: krisacr
           repository: apidotnet
           buildContext: apiweb/
-          Dockerfile: '/apiweb/SampleWebApi/Dockerfile'
+          Dockerfile: 'Dockerfile'
           tags: |
             latest
             $(Build.BuildId)
