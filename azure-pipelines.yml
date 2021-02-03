@@ -28,7 +28,7 @@ stages:
     - job: Run_docker_build_and_push
       displayName: Docker build and push
       pool:
-        vmImage: 'windows-latest'
+        vmImage: 'ubuntu-latest'
 
       steps:
 
